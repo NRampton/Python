@@ -1,0 +1,13 @@
+1. pip2 install Django: the current Homebrew installation of Python on OS X uses a different syntax, requiring pip2 as the core command. This command installs the Django module, making it available to Python programs written on my computer.
+
+2. pip2 list: Lists installed modules on the current system.
+
+3. pip2 install Django: running this again lists two lines of output, giving the paths where Django and one other package (from Django) are already installed.
+
+4. pip2 freeze: lists version information as does pip2 list, but leaves a few packages out. Documentation indicates that freeze produces output suitable for a requirements file, which (I think) means that when using a virtualenv, as we're setting up which packages/versions of things we want a given project to use, we can specify those in there.
+
+5. pip2 uninstall Django: has a simple, and very verbose, uninstall behavior. Lists every file it's going to uninstall. Asks for final confirmation (this behavior can be avoided by passing a -y or --yes option during invocation) and then gets rid of the package for you.
+
+6. pip2 show Django: doesn't show anything. Not surprising. There's no Django now to show. On an existing package it shows a lot of info, possibly including license, author, version, other package requirements--I assume it pulls from a package-specific file to get what info it can.
+
+7. pip2 search Flask: runs a search on available Python modules with the term Flask. There are a few.
