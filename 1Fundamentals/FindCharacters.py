@@ -1,6 +1,6 @@
 # input
 word_list = ['hello','world','my','name','is','Anna']
-char = 'n'
+char = 'o'
 # output
 new_list = []
 for val in range(len(word_list)):
