@@ -1,0 +1,29 @@
+img {
+  display: block;
+  margin: 0 auto;
+  height: 450px;
+  width: 575px;
+}
+
+p {
+  text-align: center;
+  font-size: 1.25em;
+}
+
+body {
+  background-color: dimgray;
+}
+
+a {
+  text-decoration: none;
+  text-align: center;
+  color: black;
+  margin-left: 50px;
+  font-size: 1.25em;
+}
+
+#fumbly {
+  position: absolute;
+  top: 412px;
+  left: 140px;
+}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>A dark room</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+  </head>
+  <body>
+    <img src="{{url_for('static', filename='images/darkroom.gif')}}" alt="darkness!">
+    <p>You find yourself in total darkness. What the...</p>
+    <a href="/lightroom">Light a match</a>
+    <a id="fumbly" href="/fumble">Try to find a door</a>
+  </body>
+  <script type="text/javascript">
+    document.getElementById("fumbly").addEventListener("mouseover", move())
+    function getRandomArb(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+    function move() {
+      getElementById('fumbly').style.top += getRandomArb(-40, 40);
+      getElementById('fumbly').style.left += getRandomArb(-40, 40);
+    }
+  </script>
+</html>
