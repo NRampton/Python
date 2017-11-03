@@ -1,0 +1,28 @@
+* {
+  text-align: center;
+  margin: 0 auto 10px auto;
+  font-family: 'Karla', sans-serif;
+}
+
+body {
+  background-color: aliceblue;
+}
+
+input[type="submit"] {
+  box-shadow: black 2px 2px;
+}
+
+.wrapper {
+  margin-top: 50px
+  width: 600px;
+}
+
+.neg_feedback {
+  background-color: darksalmon;
+  color: antiquewhite;
+}
+
+.success {
+  background-color: lawngreen;
+  color: antiquewhite;
+}

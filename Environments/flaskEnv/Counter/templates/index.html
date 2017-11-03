@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Counting!</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles.css')}}">
+  </head>
+  <body>
+    <div class="wrapper">
+      <h2>This page has been visited {{counter}} times this session.</h2>
+      <form action="/add" method="POST">
+        <input type="submit" name="plus2" value="Add 2 to count">
+      </form>
+      <form action="/reset" method="POST">
+        <input type="submit" name="zeroout" value="Start over">
+      </form>
+    </div>
+  </body>
+</html>

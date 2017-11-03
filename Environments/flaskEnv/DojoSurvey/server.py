@@ -8,15 +8,10 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/process', methods=["POST", "GET"])
+@app.route('/process', methods=["POST"])
 def process():
     print "Got the info"
-    return redirect('/results', name=request.form['name'], location=request.form['location'], language=request.form['language'], comment=request.form['comment'])
-
-
-@app.route('/results')
-def results():
-    return render_template('results.html')
+    return render_template('process.html', name=request.form['name'], location=request.form['location'], language=request.form['language'], comment=request.form['comment'])
 
 
 app.run(debug=True)
