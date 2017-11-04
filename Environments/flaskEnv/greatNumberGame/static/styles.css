@@ -13,8 +13,9 @@ input[type="submit"] {
 }
 
 .wrapper {
-  margin-top: 50px
+  margin-top: 50px;
   width: 600px;
+  background-color: white;
 }
 
 .neg_feedback {

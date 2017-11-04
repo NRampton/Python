@@ -6,7 +6,7 @@ app.secret_key = "AVeryVeryVerySecretKy"
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    session['target'] = randint(1,100)
+    session['target'] = randint(0,20)
     session['counter'] = 0
     print session['target']
     return render_template('index.html')
@@ -22,9 +22,9 @@ def guess():
     if guess > 100 or guess < 1:
         return render_template('feedback.html', feedback="Did you read the directions?", counter=session['counter'])
     elif guess > session['target']:
-        return render_template('feedback.html', feedback="Too high!", counter=session['counter'])
+        return render_template('feedback.html', guess=guess, feedback="high", counter=session['counter'])
     elif guess < session['target']:
-        return render_template('feedback.html', feedback="Too low!", counter=session['counter'])
+        return render_template('feedback.html', guess=guess, feedback="low", counter=session['counter'])
     elif guess == session['target']:
         return render_template('success.html', target=session['target'], counter=session['counter'])
 
