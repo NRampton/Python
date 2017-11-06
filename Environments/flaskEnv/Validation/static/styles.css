@@ -1,0 +1,13 @@
+body {
+  width: 700px;
+  margin: 0 auto;
+}
+
+.flashes {
+  color: red;
+}
+
+.grayed {
+  color: gray;
+  opacity: 0.6;
+}

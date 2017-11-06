@@ -1,0 +1,10 @@
+Working on OS X:
+1. Used Homebrew to install MySQL ("brew install mysql")
+2. Started the MySQL server as a system service ('brew services start mysql')
+3. Set the MySQL root user's password to "root" (mysqladmin -u root password "root")
+4. After opening up MySQL Workbench, open it up. There is a list of MySQL DB connections there.
+5. Click on the wrench next to test and configure any given connection (like, in this example, 127.0.0.1 with a port name after it)
+6. Test the connection with the button in the lower right of the resulting window. Upon doing so, you'll be prompted for the password you set in step 3.
+7. Database files can be imported in a variety of ways, including simply copying and pasting the text of a .sql file, or using the "open" command in MySQL Workbench.
+8. Once a file has been loaded and run to create the relevant database, you will have to refresh the list of available databases on the left of the Workbench screen. Then select a particular DB for use by double clicking it in that list, or by running the query command 'USE [databasename]' in the query editor in the center of the screen.
+9. Further queries can be run in this query editor, too. Just enter the appropriate query text and click the lightning bolt button or hit command-enter.

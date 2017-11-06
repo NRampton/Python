@@ -19,8 +19,8 @@ def guess():
     print guess
     print session['target']
     print guess > session['target']
-    if guess > 100 or guess < 1:
-        return render_template('feedback.html', feedback="Did you read the directions?", counter=session['counter'])
+    if guess > 20 or guess < 1:
+        return render_template('feedback.html', guess=guess, feedback="crazy", counter=session['counter'])
     elif guess > session['target']:
         return render_template('feedback.html', guess=guess, feedback="high", counter=session['counter'])
     elif guess < session['target']:
