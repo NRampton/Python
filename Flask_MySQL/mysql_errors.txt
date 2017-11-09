@@ -1,0 +1,14 @@
+OperationalError: (_mysql_exceptions.OperationalError) (2003, "Can't connect to MySQL server on '127.0.0.1' (61)")
+FIX: check the port you're passing into the connector object.
+
+OperationalError: (_mysql_exceptions.OperationalError) (1045, "Access denied for user 'root'@'localhost' (using password: YES)")
+FIX: This error comes up when your sign-in info is wrong. The message prints the user name you're trying to use, so check that first. If that checks out, it's the password.
+
+DATABASE_URI = "mysql://{}:{}@127.0.0.1:{}/{}".format(config['user'], config['password'], config['port'], config['database']) KeyError: 'database'
+FIX: This error message tells you which key in the generated string is giving it hiccups, so if you've mistyped one of your key values (in this case the config dictionary key was mistyped as 'databae' instead of the expected 'database'), the string is going to have a bad time. Mistyping other keys, whether in the config dictionary or down below in the string generation code, will produce similar errors, so the problem might be in either place.
+
+NameError: global name 'dab' is not defined
+FIX: This message popped up on the terminal page when the name of the db was mistyped. So fix that.
+
+
+Interestingly, mistyping 'localhost', no matter how badly (I tried 'gary' as well as another IP address, 192.168.1.42), doesn't produce any immediate errors--the server starts up and fetches pages just fine.

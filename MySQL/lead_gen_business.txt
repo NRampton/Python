@@ -1,0 +1,29 @@
+1.
+SELECT EXTRACT(month FROM charged_datetime) AS 'Month', SUM(amount) AS 'Billing total'
+FROM billing
+WHERE EXTRACT(MONTH FROM charged_datetime) = 3 AND EXTRACT(YEAR FROM charged_datetime) = 2012
+GROUP BY EXTRACT(month FROM charged_datetime)
+
+2.
+SELECT clients.client_id, SUM(billing.amount)
+FROM clients
+LEFT JOIN billing
+ON billing.client_id = clients.client_id
+WHERE clients.client_id = 2
+
+3.
+SELECT sites.domain_name AS 'Website', clients.client_id AS 'Client ID'
+FROM clients
+LEFT JOIN sites
+ON sites.client_id = clients.client_id
+WHERE clients.client_id = 10
+
+4.
+
+
+
+
+
+SELECT concat(EXTRACT(month FROM charged_datetime), ' ', EXTRACT(YEAR FROM charged_datetime))
+FROM billing
+ORDER BY EXTRACT(YEAR FROM charged_datetime), EXTRACT(month FROM charged_datetime)
