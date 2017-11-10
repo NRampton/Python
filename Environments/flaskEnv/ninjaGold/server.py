@@ -37,6 +37,3 @@ def process_money():
 
 
 app.run(debug=True)
-
-
-# I need to

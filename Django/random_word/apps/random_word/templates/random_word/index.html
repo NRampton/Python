@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Random word</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'random_word/styles.css' %}">
+  </head>
+  <body>
+    <span id="title">Random word</span><span id="count">(attempt #{{ count }})</span>
+    <div id="word">
+      <h2>{{ random_string }}</h2>
+    </div>
+    <form action="/random_word" method="post">
+      {% csrf_token %}
+      <input type="submit" value="Thank you, sir, may I have another?">
+    </form>
+    <form action="/random_word/reset" method="post">
+      {% csrf_token %}
+      <input type="submit" value="That counter's getting too big...">
+    </form>
+  </body>
+</html>

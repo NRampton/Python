@@ -1,0 +1,14 @@
+* {
+  margin-top: 20px;
+  text-align: center;
+}
+
+span {
+  margin-right: 20px;
+}
+
+#word {
+  width: 300px;
+  border: 1px dashed dimgray;
+  margin: 15px auto 0 auto;
+}

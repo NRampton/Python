@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>The time</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'time_disp/styles.css' %}">
+  </head>
+  <body>
+    <div id="header">
+      <h3>The current date and time are:</h3>
+    </div>
+    <div id="main">
+      <h2>{{ time }}</h2>  
+    </div>
+  </body>
+</html>
