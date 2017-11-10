@@ -1,0 +1,41 @@
+Front End:
+  Templates:
+    index.html
+      Heading
+      Table of user info
+        Full Name column is a link to /users/<id>
+        Actions column:
+          Show also goes to /users/<user_id>
+          Edit goes to /users/<id>/edit_user
+          Delete goes to /users/<id>/destroy, then redirecting to /users
+      Add new user link to /users/new
+    users_new.html
+      Heading
+      Form submitting to /users/create, redirecting to users<id>
+      Go back link takes back to /users
+    edit_user.html
+      Heading including id of user being edited
+      Form that auto-populates current information
+      Submit button goes to /users/<id>/edit
+      Show link goes to /users/<id>
+      Go Back link goes to /users
+    users_show.html
+      Heading
+      Full name and other info
+      Links to /users/<id>/edit, users/<id>/destroy
+
+
+Server:
+  Routes: set up already per wireframe/instructions
+
+
+Back End:
+One table:
+  id
+  first_name
+  last_name
+  email
+  created_at
+  updated_at
+
+  queries will generally concat(first_name, ' ', last_name) as full_name
