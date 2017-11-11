@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, session
 from django.utils.crypto import get_random_string
 
 # Create your views here.
