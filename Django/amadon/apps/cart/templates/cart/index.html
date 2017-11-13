@@ -3,8 +3,95 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/cart/styles.css' %}">
   </head>
   <body>
-
+    <div id="wrapper">
+      <h2>Buy some things!</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A shirt!</td>
+            <td>$20.00</td>
+            <td>
+              <form action="cart/process/" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="product" value="shirt">
+                <select name="quantity">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+                <input type="submit" value="Buy!">
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td>A mug!</td>
+            <td>$15.00</td>
+            <td>
+              <form action="cart/process/" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="product" value="mug">
+                <select name="quantity">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+                <input type="submit" value="Buy!">
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td>A bike!</td>
+            <td>$820.00</td>
+            <td>
+              <form action="cart/process/" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="product" value="bike">
+                <select name="quantity">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+                <input type="submit" value="Buy!">
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td>A hat!</td>
+            <td>$30.00</td>
+            <td>
+              <form action="cart/process/" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="product" value="hat">
+                <select name="quantity">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+                <input type="submit" value="Buy!">
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </body>
 </html>

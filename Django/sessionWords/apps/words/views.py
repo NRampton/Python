@@ -10,8 +10,8 @@ def index(request):
 
 
 def process(request):
-    print 'Here is the request that came in:'
-    print request.POST
+    # print 'Here is the request that came in:'
+    # print request.POST
     # print "Here's request.session['words'] just before we check to see if it exists:"
     # print request.session['words']
     now = datetime.datetime.now().isoformat()
@@ -27,18 +27,18 @@ def process(request):
         'big': font_size,
         'time': now
     }
-    print "Here's the new dictionary we're trying to append to request.session['words']:"
-    print new_word
+    # print "Here's the new dictionary we're trying to append to request.session['words']:"
+    # print new_word
     request.session['words'].append(new_word)
-    print "Here's the new, updated list of dictionaries under request.session['words']:"
-    print request.session['words']
+    # print "Here's the new, updated list of dictionaries under request.session['words']:"
+    # print request.session['words']
     request.session.modified = True         # This ended up fixing a problem where the session['words'] list wasn't updating correctly.
     return redirect('/')
 
 
 def clear(request):
     request.session['words'] = []
-    print request.session['words']
+    # print request.session['words']
     return redirect('/')
 
 
