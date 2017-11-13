@@ -9,11 +9,11 @@
   <body>
     <div id="wrapper">
       <div id="form_side">
-        <form action="/session_words/process" method="post">
+        <form action="/session_words/process/" method="post">
           {% csrf_token %}
           <h2>Add a new word</h2>
           <input type="text" name="word" value=""><br />
-          Choose color:
+          <p>Choose color:</p>
           <label for="red">
           <input type="radio" id="red" name="color" value="#DC143C">Red</label><br />
           <label for="green">
@@ -21,23 +21,31 @@
           <label for="blue">
           <input type="radio" id="blue" name="color" value="#1E90FF">Blue</label><br />
           <label for="big"><input type="checkbox" name="big" id="big" value="yes">Make it big.</label>
-          <input id="add_word" type="submit" value="Add to Session">
+          <p><input id="add_word" type="submit" value="Add to Session"></p>
         </form>
       </div>
-      <div class="list_side">
+      <div id="list_side">
         <form action="/session_words/clear" method="post">
           {% csrf_token %}
           <input id="clear_session" type="submit" value="Clear Session">
         </form>
         <table>
-          {% for index in request.session.words %}
-          <tr>
-            <td>
-              <p style="color:{{ index.color }};font-size:{{ index.big }}em">{{ index.word }}</p>
-            </td>
-            <td> - added on {{ index.time }}</td>
-          </tr>
-          {% endfor %}
+          <thead>
+            <tr>
+              <th>word:</th>
+              <th>time submitted:</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for index in request.session.words %}
+            <tr>
+              <td>
+                <span style="color:{{ index.color }};font-size:{{ index.big }}em">{{ index.word }}</span>
+              </td>
+              <td> - added on {{ index.time }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
         </table>
       </div>
     </div>

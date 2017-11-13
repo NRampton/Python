@@ -4,17 +4,30 @@
   font-family: sans-serif;
 }
 
+p {
+  margin-bottom: 10px;
+}
+
+input {
+  margin-bottom: 10px;
+}
+
 #wrapper {
   width: 90%;
+  height: 90%;
 }
 
 #form_side {
   display: inline-block;
   width: 30%;
+  vertical-align: top;
+  height: 100%;
 }
 
 #list_side {
   display: inline-block;
   border-left: 3px solid black;
-  width: 30%;
+  width: 40%;
+  vertical-align: top;
+  height: 100%;
 }
