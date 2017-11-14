@@ -14,7 +14,8 @@ def new(request):
 
 
 def create(request):
-    return redirect('/blogs/')
+    response = "<a href='/blogs/'>blogs app</a>"
+    return HttpResponse(response)
 
 
 def number(request, number):

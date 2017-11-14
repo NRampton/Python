@@ -17,22 +17,22 @@ def process_money():
     if request.form['building'] == "farm":      # the farm
         earnings = randint(10,20)
         session['gold'] += earnings
-        session['log'] += "You earned {} gold working on the farm<br>".format(earnings)
+        session['log'] = "You earned {} gold working on the farm<br>".format(earnings) + session['log']
     if request.form['building'] == "cave":      # the cave
         earnings = randint(5, 10)
         session['gold'] += earnings
-        session['log'] += "You found {} gold exploring a cave<br>".format(earnings)
+        session['log'] = "You found {} gold exploring a cave<br>".format(earnings) + session['log']
     if request.form['building'] == "house":     # the house
         earnings = randint(2, 5)
         session['gold'] += earnings
-        session['log'] += "You earned {} gold working from home<br>".format(earnings)
-    if request.form['building'] == "casino":        #the casino
+        session['log'] = "You earned {} gold working from home<br>".format(earnings) + session['log']
+    if request.form['building'] == "casino":        # the casino
         earnings = randint(-50, 50)
         session['gold'] += earnings
         if earnings < 0:
-            session['log'] += "Drat, you lost {} gold at the casino. Maybe that will teach you.<br>".format(earnings)
+            session['log'] = "Drat, you lost {} gold at the casino. Maybe that will teach you.<br>".format(earnings) + session['log']
         else:
-            session['log'] += "All right, you won {} gold at the casino. Now quite while you're ahead!<br>".format(earnings)
+            session['log'] = "All right, you won {} gold at the casino. Now quit while you're ahead!<br>".format(earnings) + session['log']
     return redirect('/')
 
 

@@ -1,0 +1,14 @@
+#wrapper {
+  width: 900px;
+  margin: 0 auto;
+  border 1px dimgrey solid;
+}
+
+.location {
+  display: inline-block;
+}
+
+#activities {
+  height: 200px;
+  overflow: scroll;
+}
