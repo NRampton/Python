@@ -1,0 +1,11 @@
+Okay, so like on the other RESTfulUsers app, we've got a couple of possible routes.
+
+GET to /users: calls index(), displays all Users
+
+GET to /users/new: calls new() to render template with a form that sends POST to users/create. This inserts the new user into the db, then redirects to users<id> to show that user when it's done.
+
+GET to /users/<id>/ calls show()
+
+POST to /users/<id> calls update(), changes the relevant data, redirects a GET to users/<id> when it's done.
+
+GET to /users/<id>/destroy calls destroy(), which nukes the relevant user, then redirects to /users

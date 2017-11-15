@@ -14,4 +14,8 @@ class User(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __repr__(self):
-        return "<User object: {} {}, age {}>".format(self.first_name, self.last_name, self.age)
+        return "<User object: id: {} name: {} {}, age: {}>".format(self.id, self.first_name, self.last_name, self.age)
+
+
+    # some sort of validation would be included via a full_clean() method built into Django's
+    # Model instance handler. That's where to look for more info here.

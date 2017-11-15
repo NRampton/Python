@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Users {{ id }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'users/styles.css' %}">
+  </head>
+  <body>
+    <h1>Edit User {{ id }}</h1>
+    <form action="/users/{{ id }}" method="post">
+      {% csrf_token %}
+      First name:
+      <input type="text" name="first_name" value="{{ query[0]['first_name'] }}">
+      <input type="text" name="last_name" value="{{ query[0]['last_name'] }}">
+      <input type="text" name="email" value="{{ query[0]['email'] }}">
+      <input type="submit" value="Update">
+    </form>
+    <a href="/users/{{ id }}"></a>
+    <a href="/users"></a>
+  </body>
+</html>
