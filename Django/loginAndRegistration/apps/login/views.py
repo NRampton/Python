@@ -17,7 +17,6 @@ def login(req):
     return redirect('/')
 
 
-
 def register(req):
     result = User.manager.createUser(req.POST)
     if result[0]:

@@ -45,18 +45,19 @@ class UserManager(models.Manager):
             flag = True
         if flag:
             return (False, errors)
-        new_user = self.create(first_name=data['first_name'], last_name=data['last_name'], email=data['email'], password=bcrypt.hashpw(data['password'].encode, bcrypt.gensalt()))
+        new_user = self.create(first_name=data['first_name'], last_name=data['last_name'], email=data['email'], password=bcrypt.hashpw(data['password'], bcrypt.gensalt()))
         return (True, new_user)
 
     def login(self, form):
         flag = False
         errors = {}
         data = uni_str_dict(form)
-        called_user = User.manager.get(email=data['email'])
-        if not called_user['email']:
-            flag = True
-            errors['email'] = "That email is not found in our records"
-        if not called_user['password'] == bcrypt.hashpw(data['password'].encode, bcrypt.gensalt()):
+        try:
+            called_user = User.manager.get(email=data['email'])
+        except Exception:
+            errors['death'] = "That email does not exist in our records."
+            return (False, errors)
+        if not bcrypt.checkpw(data['password'].encode(), called_user.password.encode()):
             flag = True
             errors['password'] = "That password is incorrect. Forgot your password? Sorry, haven't learned what to do about that yet."
         if flag:
