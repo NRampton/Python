@@ -3,6 +3,9 @@ from __future__ import unicode_literals
 from django.db import models
 
 # Create your models here.
+NUM_REGEX = re.compile(r'^[a-zA-z]+$')
+EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
+
 
 
 def uni_str_dict(mydict):

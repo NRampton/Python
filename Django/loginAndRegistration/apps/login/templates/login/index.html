@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Please register an account!</title>
+  </head>
+  <body>
+    <h3>Login!</h3>
+    <form action="/login" method="post">
+      <p>Email: <input type="text" name="email" value=""></p>
+      <p>Password: <input type="password" name="password" value=""></p>
+      <p><input type="submit" value="Log in!"></p>
+    </form>
+    <h3>Don't have an account? What!? How dare you?! Register here.</h3>
+    <form action="/register" method="post">
+      <p>Email: <input type="text" name="email" value=""></p>
+      <p>First Name: <input type="text" name="first_name" value=""></p>
+      <p>Last Name: <input type="text" name="last_name" value=""></p>
+      <p>Password: <input type="password" name="password" value=""></p>
+      <p>Confirm password: <input type="password" name="confirm_password" value=""></p>
+      <p><input type="submit" value="All right!"></p>
+    </form>
+      {% if messages %}
+      <p class="flashes">Looks like we ran into some trouble processing your form. Let's have a look...</p>
+      <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+  </body>
+</html>
