@@ -13,10 +13,15 @@ def new(request):
 
 
 def edit(request, id):
-
+    id = int(id)
+    query = User.objects.get(id=id)
+    # print query
     context = {
-        'id': id
-
+        'id': id,
+        'first_name': query.first_name,
+        'last_name': query.last_name,
+        'email': query.email,
+        'created_at': query.created_at
     }
     return render(request, 'users/edit.html', context)
 
@@ -24,7 +29,7 @@ def edit(request, id):
 def show(request, id):
     id = int(id)
     query = User.objects.get(id=id)
-    print query
+    # print query
     context = {
         'id': id,
         'first_name': query.first_name,
@@ -44,8 +49,16 @@ def create(request):
 
 def destroy(request, id):
     User.objects.get(id=id).delete()
-    return redirect('users/')
+    return redirect('/')
 
 
-def update(request):
-    return redirect('users/<id>')
+def update(request, id):
+    id = int(id)
+    queryset = User.objects.get(id=id)
+    print queryset
+    print request.POST
+    queryset.first_name = request.POST['first_name']
+    queryset.last_name = request.POST['last_name']
+    queryset.email = request.POST['email']
+    queryset.save()
+    return redirect('/users/{}'.format(id))

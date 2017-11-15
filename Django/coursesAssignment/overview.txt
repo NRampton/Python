@@ -1,0 +1,12 @@
+URLs/methods:
+  / or /courses calls views.index
+  /courses/create calls views.create, which redirects back to /courses
+  /courses/<id>/remove calls views.remove, giving the option to delete (courses/<id>/destroy) or go back (/courses)
+  /courses/<id>/destroy deletes the relevant Course object, then redirects back to /courses
+
+Templates:
+index.html includes form submitting to /courses/create, and link to courses/<id>/remove
+remove.html includes link back to /courses and form button for courses/<id>/destroy
+
+
+The Algorithm Design Manual

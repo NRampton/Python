@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="{% static 'users/styles.css' %}">
   </head>
   <body>
-    <h1>User {{ context.id }}</h1>
-    <p>First Name: {{ context.first_name }}</p>
-    <p>Last Name: {{ context.last_name }}</p>
-    <p>Email: {{ context.email }}</p>
-    <p>Created at: {{ query.created_at }}</p>
-    <a href="/users/{{ context.id }}/edit">Edit</a>
-    <a href="/users/{{ context.id }}/destroy">Delete</a>
+    <h1>User {{ id }}</h1>
+    <p>First Name: {{ first_name }}</p>
+    <p>Last Name: {{ last_name }}</p>
+    <p>Email: {{ email }}</p>
+    <p>Created at: {{ created_at }}</p>
+    <a href="/users/{{ id }}/edit">Edit</a>
+    <a href="/users/{{ id }}/destroy">Delete</a>
     <a href="/users">Go Back</a>
   </body>
 </html>

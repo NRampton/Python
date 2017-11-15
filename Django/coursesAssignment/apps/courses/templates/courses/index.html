@@ -1,0 +1,43 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <title>Add a New Course</title>
+</head>
+<body>
+  <div id="upper">
+    <h2>Add a new course</h2>
+    <form action="/courses/create" id="new_course" method="POST">
+      {% csrf_token %}
+      Course name: <input type="text" name="name"><br>
+      Description: <textarea name="desc" form="new_course" cols="40" rows="5"></textarea>
+      <input type="submit" value="Add">
+    </form>
+  </div>
+  {% if messages %}
+    {% for message in messages %}
+      <p class="error">{{ message }}</p>
+    {% endfor %}
+  {% endif %}
+  <h2>Courses</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Course Name</th>
+        <th>Description</th>
+        <th>Date Added</th>
+        <th>Acions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for course in queryset %}
+      <tr>
+        <td>{{ course.name }}</td>
+        <td>{{ course.desc }}</td>
+        <td>{{ course.created_at }}</td>
+        <td><a href="/courses/{{ course.id }}/remove">remove</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>
