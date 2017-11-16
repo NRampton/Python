@@ -1,0 +1,2 @@
+NUM_REGEX = re.compile('[^a-zA-Z]')
+EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')

@@ -13,3 +13,8 @@ class User(models.Model):
 
     def __str__(self):
         return "User #{}, Name: {} {}".format(self.id, self.first_name, self.last_name)
+
+
+class Relationship(models.Model):
+    user = models.ForeignKey(User, related_name="relationships")
+    user2 = models.ForeignKey(User, related_name="relationships2")

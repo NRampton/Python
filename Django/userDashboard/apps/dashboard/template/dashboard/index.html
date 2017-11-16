@@ -1,14 +1,29 @@
-This project will require the following:
-
-Templates:
-  Home page: Just a landing page that contains a project summary and a button to take you to the login page.
-  Signin page: offers login by email and password, as well as a link to the registration page
-  Registration page: Takes email, first name, last name, password, and password confirmation to register an account. Also has a link back to the login page.
-  Admin dashboard: Displays a table of users
-
-
-Views.py methods:
-
-
-
-Models:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Home Page</title>
+</head>
+<body>
+  <nav><span>Test App</span><a href="/">Home</a><a href="/signin">Sign in</a></nav>
+  <div id="landing_header">
+    <h2>Welcome to the test</h2>
+    <p>We're going to build a cool application using a MVC framework! This application was built by me, Bender.</p>
+    <a href="/signin">Start</a>
+  </div>
+  <div class="landing_info">
+    <h4>Manage Users</h4>
+    <p>Using this application, you'll learn how to add, remove, and edit users for the application.</p>
+  </div>
+  <div class="landing_info">
+    <h4>Leave messages</h4>
+    <p>Users will be able to leave a message to another user using this application.</p>
+  </div>
+  <div class="landing_info">
+    <h4>Edit User Information</h4>
+    <p>Admins will be able to edit another user's information (email address, first name, last name, etc).</p>
+  </div>
+</body>
+</html>
