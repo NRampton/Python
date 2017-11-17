@@ -1,29 +1,63 @@
 This project will require the following:
 
-Templates:
-  1. index.html: Just a landing page that contains a project summary and a button to take you to the login page.
-  2. signin.html: offers login by email and password, as well as a link to the registration page
-  3. register.html: Takes email, first name, last name, password, and password confirmation to register an account. Also has a link back to the login page.
-  4. admin_dboard.html: Displays a table of users. Each name is a link to that user's profile, and the last column includes a couple of actions. The wireframe notes specifically that only admin users should be allowed to add new users (or, one assumes, remove existing ones).
-  5. new_user.html: A form for inputing the data to create a new user.
-  6. user_dboard.html: like Admin dashboard, with links to user profiles, but no option to create or delete them.
-  7. user_edit.html: Forms to update personal information, change password, and edit personal description. Each user should only be able to edit his/her own profile. Admins should have write privileges on all users' information.
-  8. wall.html: Displays user info at the top, with a wall where people can leave messages or comment on messages.
-  9. admin_edit.html: Allows admin user to change other users' info, password, and, crucially, user level.
+  General User Actions:
+    GET to localhost calls index(), renders index.html
+    GET to localhost/signin calls show_signin(), renders signin.html with form to localhost/login
+    GET to localhost/register calls register(), renders register.html with form to localhost/create
+    GET to localhost/dashboard calls list(), renders either dashboard.html or admin_dashboard.html depending on user permissions
+    GET to localhost/users/new calls new(), renders new_user.html with form to localhost/create
+    GET to localhost/users/edit calls edit(), renders edit_profile.html with forms to localhost/update and localhost/password
+    GET to localhost/users/show/<user_id> calls show(), renders user_info.html, pasing in messages, comments, etc.
+    POST to localhost/login calls login(), validates credentials, redirects to /localhost/dashboard or localhost/dashboard/admin depending on user permissions
+    POST to localhost/create calls create(), validates POST inputs, redirects to
+    POST to localhost/update calls update(), validates POST inputs (is this your account?), redirects to
+    POST to localhost/password calls password(), validates POST inputs, redirects back to localhost/users/edit (success message?)
+
+  Admin-specific Actions:
+    GET to localhost/users/edit/<user_id> calls admin_edit(), renders edit_user.html with forms to localhost/update and localhost/password
+    GET to localhost/remove calls remove(), renders remove.html, with form to localhost/destroy
+    POST to localhost/destroy calls destroy(), redirects to localhost/dashboard
 
 
-Views.py methods:
-  1. index(): renders the index page.
-  2. show_signin(): renders the signing.html template.
-  3. login(): takes POST data, validates it, then allows the user access to the site based on his/her user permissions.
-  4. registration(): renders the register.html template.
-  5. create(): takes in data, validates it, then creates a new User object in the db. Redirects to that user's wall. Callable by a user (from register.html) to create a new account, or by admin to do so from the admin_dboard.html page.
-  6. list(): retrieves a list of current users. If user level is admin, renders admin_dboard.html. Otherwise renders user_db.html.
-  7. edit_user(): renders a form for updating existing user data. Called by admins from the admin_dboard.html. Users will see this for their own profile if they click on their name from the users list; otherwise they'll see the profile of any other user. Wireframe doesn't make immediately clear where a user would click to edit his/her own profile. Perhaps a link from the top of the wall?
-  8. wall(): renders wall.html, retrieving message and comment data and organizing it for the template.
+                Templates:
+                  1. index.html: Just a landing page that contains a project summary and a button to take you to the login page.
+                  2. signin.html: offers login by email and password, as well as a link to the registration page
+                  3. register.html: Takes email, first name, last name, password, and password confirmation to register an account. Also has a link back to the login page.
+                  4. admin_dboard.html: Displays a table of users. Each name is a link to that user's profile, and the last column includes a couple of actions. The wireframe notes specifically that only admin users should be allowed to add new users (or, one assumes, remove existing ones).
+                  5. new_user.html: A form for inputing the data to create a new user.
+                  6. user_dboard.html: like Admin dashboard, with links to user profiles, but no option to create or delete them.
+                  7. user_edit.html: Forms to update personal information, change password, and edit personal description. Each user should only be able to edit his/her own profile. Admins should have write privileges on all users' information.
+                  8. wall.html: Displays user info at the top, with a wall where people can leave messages or comment on messages.
+                  9. admin_edit.html: Allows admin user to change other users' info, password, and, crucially, user level.
 
 
-Models:
-  User: should include permissions, email, first_name, last_name, created_at, updated_at, links to authored messages and comments.
-  Message: should include content, created_at, updated_at, link to author(onetomany), links to child comments (onetomany)
-  Comment: should include content, created_at, updated_at, link to author(onetomany), link to parent comment
+                Views.py methods:
+                  1. index(): renders the index page.
+                  2. show_signin(): renders the signing.html template.
+                  3. login(): takes POST data, validates it, then allows the user access to the site based on his/her user permissions.
+                  4. registration(): renders the register.html template.
+                  5. create(): takes in data, validates it, then creates a new User object in the db. Redirects to that user's wall. Callable by a user (from register.html) to create a new account, or by admin to do so from the admin_dboard.html page.
+                  6. list(): retrieves a list of current users. If user level is admin, renders admin_dboard.html. Otherwise renders user_db.html.
+                  7. edit_user(): renders a form for updating existing user data. Called by admins from the admin_dboard.html. Users will see this for their own profile if they click on their name from the users list; otherwise they'll see the profile of any other user. Wireframe doesn't make immediately clear where a user would click to edit his/her own profile. Perhaps a link from the top of the wall?
+                  8. wall(): renders wall.html, retrieving message and comment data and organizing it for the template.
+
+  Models:
+    User: should include
+      permissions
+      email
+      first_name
+      last_name
+      created_at
+      updated_at
+    Message: should include
+      content
+      created_at
+      updated_at
+      f.k. link to author
+      f.k. link to addressee
+    Comment: should include
+      content
+      created_at
+      updated_at
+      f.k. link to author
+      f.k. link to parent message

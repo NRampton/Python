@@ -9,3 +9,18 @@ GET to /users/<id>/ calls show()
 POST to /users/<id> calls update(), changes the relevant data, redirects a GET to users/<id> when it's done.
 
 GET to /users/<id>/destroy calls destroy(), which nukes the relevant user, then redirects to /users
+
+
+In [1]: from apps.users.models import *
+
+In [2]: Friendship.objects.all()
+Out[2]: <QuerySet [<Friendship: Yay, User #1, Name: Flinty McGee is friends with User #8, Name: Big Red!>]>
+
+In [3]: Friendship.objects.first().friend.email
+Out[3]: u'bigejsmcxnvj'
+
+In [4]: Friendship.objects.create(user=User.objects.get(id=2), friend=User.objects.get(id=7))
+Out[4]: <Friendship: Yay, User #2, Name: Kilroy Arbuckle is friends with User #7, Name: Aaron Aablabab!>
+
+In [5]: Friendship.objects.create(user=User.objects.first(), friend=User.objects.first())
+Out[5]: <Friendship: Yay, User #1, Name: Flinty McGee is friends with User #1, Name: Flinty McGee!>
