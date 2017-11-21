@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ajax Notes</title>
+  <link href="https://fonts.googleapis.com/css?family=Homemade+Apple|Noto+Sans" rel="stylesheet">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'notes/styles.css' %}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+  <div id="wrapper">
+    <h3 id="header">Notes</h3>
+    <p id="hint">(Click a note to edit)</p>
+    <div id="marquee">
+      {% for note in notes %}
+      <div class="note">
+        <form action="/destroy/" method="POST" class="destroy_form">
+          {% csrf_token %}
+          <input type="hidden" name="note_id" value="{{ note.id }}">
+          <h2>{{ note.title }}</h2>
+          <input type="submit" value="delete" class="delete_button">
+        </form>
+        <div class="note_container" id="{{ note.id }}">
+          {% csrf_token %}
+          <p>{{ note.content }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <form action="/create/" method="POST" id="create">
+      {% csrf_token %}
+      <input type="text" id="new_title" name="title" placeholder="Insert note title here...">
+      <input type="submit" value="Add Note" id="add_note">
+    </form>
+  </div>
+</body>
+<script>
+  $('.destroy_form').submit(function(e){
+    e.preventDefault();
+    $.ajax({
+      url: '/destroy',
+      method: 'POST',
+      data: $(this).serialize(),
+      success: function(response) {
+
+      }
+    })
+  })
+  $('#create').submit(function(e){
+    e.preventDefault();
+    $.ajax({
+      url: '/create/',
+      method: 'POST',
+      data: $(this).serialize(),
+      success: function(response) {
+
+      }
+    })
+  })
+  $('.update').submit(function(e){
+    e.preventDefault();
+    $.ajax({
+      url: '/update/',
+      method: 'POST',
+      data: $(this).serialize(),
+      success: function(response) {
+
+      }
+    })
+  })
+  $('.note_container').on("click", function() {
+    var id = $(this).attr('id');
+    // console.log(id);
+    $.ajax({
+      url: '/select/',
+      method: 'POST',
+      data: {'id': id},
+      success: function(response){
+        $(this).html(response)
+      }
+    })
+  })
+</script>
+</html>

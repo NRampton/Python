@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajax Posts</title>
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Montserrat" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'posts/styles.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <h1>My Posts</h1>
+      <div id="marquee">
+        {% for post in posts %}
+        <div class="post">
+          <p>{{ post.content }}</p>
+          <form action="/destroy/" method="POST" class="wreckit">
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{ post.id }}">
+            <input type="submit" value="Delete" class="destroy">
+          </form>
+      </div>
+        {% endfor %}
+      </div>
+      <form action="/posts/" method="POST" id="add_note">
+        {% csrf_token %}
+        <p>Add a note:</p>
+        <textarea name="content" form="add_note" cols="40" rows="6" placeholder="Put some text here."></textarea>
+        <input type="submit" value="Add">
+      </form>
+    </div>
+  </body>
+  <script>
+    $('.wreckit').submit(function(e){
+      e.preventDefault();
+      $.ajax({
+        url: '/destroy/{{ post.id }}',
+        method: 'POST',
+        data: $(this).serialize(),
+        success: function(serverResponse){
+          $('#marquee').html(serverResponse);
+        }
+      })
+    });
+    $('#add_note').submit(function(e){
+      e.preventDefault();
+      $.ajax({
+        url: '/posts/',
+        method: 'POST',
+        data: $(this).serialize()
+        success: function(serverResponse){
+          $('#marquee').html(serverResponse);
+      })
+    });
+  </script>
+</html>

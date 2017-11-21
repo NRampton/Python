@@ -1,0 +1,8 @@
+<div class="note_container" >
+  <form action="/update/" class="update">
+    {% csrf_token %}
+    <input type="hidden" name="note_id" value="{{ note.id }}">
+    <textarea cols="30" rows="10" value="{{ note.content }}"></textarea>
+    <input type="submit" value="update" class="update_button">
+  </form>
+</div>

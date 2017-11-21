@@ -1,0 +1,53 @@
+* {
+  /*margin: 0;
+  padding: 0;*/
+  font-family: Montserrat, sans-serif;
+}
+
+#wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#marquee {
+  overflow: scroll;
+  white-space: nowrap;
+  padding-left: 0;
+  height: 160px
+}
+
+.post {
+  display: inline-block;
+  border: 1px solid dimgrey;
+  padding: 0 20px 20px 20px;
+  margin-left: 10px;
+  height: 120px;
+  width: 22%;
+  vertical-align: top;
+  position: relative;
+  background-color: yellow;
+  border-radius: 3px;
+}
+
+.post:first-child {
+  margin-left: 0;
+}
+
+.post p {
+  font-family: 'Permanent Marker', sans-serif;
+  white-space: normal;
+}
+
+.destroy {
+  position: absolute;
+  top: 110px;
+  right: 15px;
+  color: gray;
+  border: none;
+  vertical-align: bottom;
+  background-color: lemonchiffon
+}
+
+textarea {
+  padding: 10px;
+}

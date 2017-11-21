@@ -1,0 +1,15 @@
+URLs:
+  GET to / calls views.index, grabs all the notes and renders index.html
+
+  POST to /create calls views.create, creates a new note based on form content, redirects to /
+  POST to /select calls views.select, replaces the existing note with a textarea whose default value is the existing note's content
+  POST to /update calls views.update, sends the updated content to the note in question then redirects to /
+  POST to /destroy calls views.destroy, deletes the offending note and redirects back to /
+
+
+
+Templates:
+  index.html
+
+  sub-templates:
+    post_index.html
