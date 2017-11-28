@@ -1,0 +1,35 @@
+* {
+  font-family: "Noto Sans", sans-serif;
+}
+
+h2 {
+  margin: 10px auto;
+  font-size: 0.9em;
+}
+
+.note_container p {
+  font-family: "Patrick Hand SC", cursive;
+}
+
+.note {
+  display: inline-block;
+  margin-left: 15px;
+}
+
+.note:first-child {
+  margin-left: 0;
+}
+
+.note_container>p {
+  font-size: 1.1em;
+}
+
+#wrapper {
+  width: 50%;
+  margin: 0 auto;
+}
+
+#marquee {
+  overflow: scroll;
+  white-space: nowrap;
+}

@@ -16,13 +16,9 @@ def create(request):
 
 
 def select(request):
-    if request.method == 'POST':
-        print request.POST
-        note = Note.objects.get(id=request.POST['id'])
-        context = {'note': note}
-        return render(request, 'notes/replacement_form.html', context)
-    else:
-        return HttpResponse("Ooops, wrong HTTP request method.")
+    note = Note.objects.get(id=request.GET['id'])
+    context = {'note': note}
+    return render(request, 'notes/replacement_form.html', context)
 
 
 def update(request):
@@ -34,4 +30,7 @@ def update(request):
 def destroy(request):
     note_id = request.POST['note_id']
     Note.objects.get(id=note_id).delete()
-    return redirect('/')
+    context = {
+        'notes': Note.objects.all()
+    }
+    return render(request, 'notes/replacement_index.html', context)

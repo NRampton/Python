@@ -9,6 +9,7 @@
   {% load static %}
   <link rel="stylesheet" href="{% static 'notes/styles.css' %}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 </head>
 <body>
   <div id="wrapper">
@@ -24,7 +25,6 @@
           <input type="submit" value="delete" class="delete_button">
         </form>
         <div class="note_container" id="{{ note.id }}">
-          {% csrf_token %}
           <p>{{ note.content }}</p>
         </div>
       </div>
@@ -38,17 +38,38 @@
   </div>
 </body>
 <script>
+
+  function attach_handlers() {
+    $('.note_container p').on("click", function() {
+      var id_num = $(this).attr('id')
+      $.ajax({
+        url: '/select/',
+        method: 'GET',
+        data: {'id': id_num},
+        success: function(response){
+          console.log(response);
+          $(this).html(response)
+        }
+      });
+    });
+  };
+
+  $(document).ready(function() {
+    attach_handlers();
+  });
+
   $('.destroy_form').submit(function(e){
     e.preventDefault();
     $.ajax({
-      url: '/destroy',
+      url: '/destroy/',
       method: 'POST',
       data: $(this).serialize(),
       success: function(response) {
-
+        $('#marquee').html(response);
       }
-    })
-  })
+    });
+  });
+
   $('#create').submit(function(e){
     e.preventDefault();
     $.ajax({
@@ -56,10 +77,11 @@
       method: 'POST',
       data: $(this).serialize(),
       success: function(response) {
-
+        $('#marquee').html(response)
       }
-    })
-  })
+    });
+  });
+
   $('.update').submit(function(e){
     e.preventDefault();
     $.ajax({
@@ -67,21 +89,9 @@
       method: 'POST',
       data: $(this).serialize(),
       success: function(response) {
-
+        $('#marquee').html(response);
       }
-    })
-  })
-  $('.note_container').on("click", function() {
-    var id = $(this).attr('id');
-    // console.log(id);
-    $.ajax({
-      url: '/select/',
-      method: 'POST',
-      data: {'id': id},
-      success: function(response){
-        $(this).html(response)
-      }
-    })
-  })
+    });
+  });
 </script>
 </html>

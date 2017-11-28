@@ -1,0 +1,20 @@
+URLs:
+  GET to /, calls index(), queries for all leads, renders index.html.
+
+  POST to /date, calls date(), which takes date objects from the date pickers on the page and runs a query to limit results to that date range.
+
+
+
+Templates:
+  There's really just the one, with an additional partial for whatever comes up.
+
+
+Models:
+
+
+
+
+Notes:
+  So the backing db will just be a list of users with some various data attached. No other models will be required for this project as far as I can see--the dates, names, and any other selectors will basically act as filtering mechanisms for what gets displayed when. So the contents of the table are being updated based on various query parameters, then the whole thing is getting rendered later. We're looking to get JSON back, I assume, though maybe not.
+
+  POST to name... does what, exactly? Is that another search filter on this wireframe? Hard to imagine what else it might be doing. But how does a "name" search field interface with first_name and last_name columns in the model? I think it's going to work better as a .filter() query than as a .get() query. That will return a valid empty set if the queries don't work, where a .get() will throw a fit that will have to be tried/excepted around. The first_name and last_name columns could be queried separately or even together. In the first case the two separate queries could be appended successively to the same string for rendering in the corresponding HTML partial. In the latter case they would all be returned at once, which would be my preference on a couple of levels.

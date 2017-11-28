@@ -1,0 +1,13 @@
+{% for note in notes %}
+<div class="note">
+  <form action="/destroy/" method="POST" class="destroy_form">
+    {% csrf_token %}
+    <input type="hidden" name="note_id" value="{{ note.id }}">
+    <h2>{{ note.title }}</h2>
+    <input type="submit" value="delete" class="delete_button">
+  </form>
+  <div class="note_container" id="{{ note.id }}">
+    <p>{{ note.content }}</p>
+  </div>
+</div>
+{% endfor %}
